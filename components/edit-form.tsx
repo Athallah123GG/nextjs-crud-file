@@ -1,6 +1,5 @@
 "use client"
 
-import React, { use } from "react";
 import { updateImage } from "@/lib/actions";
 import { useFormState } from "react-dom";
 import { SubmitButton } from "@/components/button";
