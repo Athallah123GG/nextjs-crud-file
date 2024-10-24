@@ -36,7 +36,7 @@ export const DeleteButton = ({ id }: { id: string }) => {
 
     return (
         <form
-            action={deleteImageWithId}
+            action = {deleteImageWithId}
             className="py-3 text-sm bg-gray-50 rounded-br-md hover:bg-gray-100 text-center w-full">
             <DeleteBtn />
         </form>

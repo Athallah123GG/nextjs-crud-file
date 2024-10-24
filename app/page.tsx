@@ -1,8 +1,6 @@
 import Card from "@/components/card";
 import Link from "next/link";
 import { getImages } from "@/lib/data";
-import { ChangeEvent } from "react";
-
 
 
 export default async function Home() {
