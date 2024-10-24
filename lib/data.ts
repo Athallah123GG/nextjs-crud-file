@@ -7,7 +7,7 @@ export const getImages = async () => {
             orderBy: { createdAt: "desc" }
         });
         return result;
-    } catch (error) {
+    } catch {
         throw new Error("Failed to fetch Data")
     }
 };
@@ -18,7 +18,7 @@ export const getImageById = async (id: string) => {
             where: { id },
         });
         return result;
-    } catch (error) {
+    } catch {
         throw new Error("Failed to fetch Data")
     }
 };
