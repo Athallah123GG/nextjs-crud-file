@@ -63,7 +63,7 @@ export const uploadImage = async (prevState: unknown, formData: FormData) => {
                 image: url,
             },
         });
-    } catch (error) {
+    } catch  {
         return {
             message: "Failde to create Data"
         }
@@ -86,7 +86,7 @@ export const deleteImage = async (id: string) => {
                 id,
             },
         });
-    } catch (error) {
+    } catch {
         return { message: "Failed To delete Data" }
     }
     revalidatePath("/");
@@ -135,7 +135,7 @@ export const updateImage = async (id: string, prevState: unknown, formData: Form
             },
             where:{id}
         });
-    } catch (error) {
+    } catch {
         return {
             message: "Failde to update Data"
         }
