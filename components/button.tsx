@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
+import { deleteImage } from "@/lib/actions";
 
 export const SubmitButton = ({ label }: { label: string }) => {
 
@@ -17,7 +18,7 @@ export const SubmitButton = ({ label }: { label: string }) => {
         >{label === "upload" ? (
             <>{pending ? "Uploading..." : "Upload"}</>
         ) : (
-            <>{pending ? "Updating..." : "Updated"}</>
+            <>{pending ? "Updating..." : "Update"}</>
         )}
         </button>
     );
@@ -25,14 +26,28 @@ export const SubmitButton = ({ label }: { label: string }) => {
 
 export const EditButton = ({ id }: { id: string }) => {
     return (
-        <Link href={`edit/${id}`} className="py-3 text-sm bg-gray-50 rounded-bl-md hover:bg-gray-100 text-center">Edit</Link>
+        <Link href={`edit/${id}`} className="py-3 text-sm bg-gray-50 rounded-bl-md hover:bg-gray-100 text-center w-full">Edit</Link>
     )
 }
 
 export const DeleteButton = ({ id }: { id: string }) => {
+
+    const deleteImageWithId = deleteImage.bind(null, id);
+
     return (
-        <form className="py-3 text-sm bg-gray-50 rounded-bl-md hover:bg-gray-100 text-center">
-            <button type="submit">Delete</button>
+        <form
+            action={deleteImageWithId}
+            className="py-3 text-sm bg-gray-50 rounded-br-md hover:bg-gray-100 text-center w-full">
+            <DeleteBtn />
         </form>
+    );
+};
+
+const DeleteBtn = () => {
+
+    const { pending } = useFormStatus();
+
+    return (
+        <button type="submit" disabled={ pending } > { pending ? "Deleting..." : "Delete" }</button>
     )
 }
