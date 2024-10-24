@@ -2,6 +2,8 @@ import Card from "@/components/card";
 import Link from "next/link";
 import { getImages } from "@/lib/data";
 
+
+
 export default async function Home() {
 
   const images = await getImages();
@@ -13,8 +15,8 @@ export default async function Home() {
         <Link href="/create" className="py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white">New Images</Link>
       </div>
       <div className="grid md:grid-cols-3 gap-5 mt-10">
-        {images.map((item) => (
-          <Card key={item.id} data={item} />
+        {images.map((images) => (
+          <Card key={images.id} data={images} />
 
         ))}
       </div>
