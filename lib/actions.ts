@@ -23,7 +23,8 @@ const uploadSchema = z.object({
 
 const EditSchema = z.object({
     title: z.string().min(1),
-    image: z.instanceof(File).refine((file) => file.size > 0, { message: "Image is required" })
+    image: z.instanceof(File)
+        // .refine((file) => file.size > 0, { message: "Image is required" })
 
         .refine((file) => file.size === 0 || file.type.startsWith("image/"), {
             message: "only images are all allowed",
