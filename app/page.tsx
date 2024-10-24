@@ -1,6 +1,7 @@
 import Card from "@/components/card";
 import Link from "next/link";
 import { getImages } from "@/lib/data";
+import { ChangeEvent } from "react";
 
 
 
@@ -15,8 +16,8 @@ export default async function Home() {
         <Link href="/create" className="py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white">New Images</Link>
       </div>
       <div className="grid md:grid-cols-3 gap-5 mt-10">
-        {images.map((images) => (
-          <Card key={images.id} data={images} />
+        {images.map((item: any) => (
+          <Card key={item.id} data={item} />
 
         ))}
       </div>
