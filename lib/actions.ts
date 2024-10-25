@@ -63,7 +63,7 @@ export const uploadImage = async (prevState: unknown, formData: FormData) => {
                 image: url,
             },
         });
-    } catch  {
+    } catch {
         return {
             message: "Failde to create Data"
         }
@@ -75,23 +75,26 @@ export const uploadImage = async (prevState: unknown, formData: FormData) => {
 };
 
 
-export const deleteImage = async (id: string) => {
+export const deleteImage = async (id: string): Promise<void> => {
     const data = await getImageById(id);
-    if (!data) return { message: "No Data Found" };
+    if (!data) {
+        console.warn("No Data Found");
+        return;
+    }
 
     await del(data.image);
     try {
         await prisma.upload.delete({
-            where: {
-                id,
-            },
+            where: { id },
         });
     } catch {
-        return { message: "Failed To delete Data" }
+        console.error("Failed To Delete Data");
+        return;
     }
-    revalidatePath("/");
 
+    revalidatePath("/");
 };
+
 
 
 // Update Image
@@ -133,7 +136,7 @@ export const updateImage = async (id: string, prevState: unknown, formData: Form
                 title,
                 image: imagePath,
             },
-            where:{id}
+            where: { id }
         });
     } catch {
         return {

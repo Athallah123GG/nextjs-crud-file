@@ -31,15 +31,17 @@ export const EditButton = ({ id }: { id: string }) => {
 }
 
 export const DeleteButton = ({ id }: { id: string }) => {
+
+    const deleteImageWithId = deleteImage.bind(null, id);
+
     return (
         <form
-            action={async () => await deleteImage(id)} // pastikan action async
+            action = {deleteImageWithId}
             className="py-3 text-sm bg-gray-50 rounded-br-md hover:bg-gray-100 text-center w-full">
             <DeleteBtn />
         </form>
     );
 };
-
 
 const DeleteBtn = () => {
 
