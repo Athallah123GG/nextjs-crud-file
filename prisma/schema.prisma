@@ -5,6 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
+  // provider = "prisma-client-js"
   provider = "prisma-client-js"
   // output   = "./generated/client"
   output = "../../node_modules/.prisma/client"
@@ -18,7 +19,7 @@ datasource db {
 }
 
 model Upload {
-    id        String   @id @default(cuid())
+  id        String   @id @default(cuid())
   title     String
   image     String
   createdAt DateTime @default(now())
