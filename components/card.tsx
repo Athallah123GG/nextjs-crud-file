@@ -1,10 +1,8 @@
 // import React from 'react'
 import Image from 'next/image';
 import { DeleteButton, EditButton } from '@/components/button';
-// import type { Upload } from '@prisma/client'
-// import type { Upload } from '@prisma/client';
-import { Upload } from '@/prisma/generated/client';
-// import type { Upload } from '@/generated/client';
+import type { Upload } from '@prisma/client';
+
 
 
 
